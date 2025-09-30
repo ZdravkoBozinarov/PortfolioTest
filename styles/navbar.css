@@ -1,0 +1,69 @@
+.nav-container {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 32px;
+    z-index: 1000;
+
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.left-nav-side {
+    font-weight: bold;
+    font-size: 20px;
+    transition: transform 0.35s ease;
+    cursor: pointer;
+}
+
+.left-nav-side:hover {
+    transform: scale(1.1);
+}
+
+.right-nav-side a {
+    font-weight: 100;
+}
+
+.right-nav-side,
+.right-nav-side a {
+    font-size: 16px;
+    display: flex;
+    color: inherit;
+    gap: 35px;
+    text-decoration: none;
+}
+
+.right-nav-side .clients {
+    margin-right: 60px;
+}
+
+.nav-container a {
+    position: relative;
+    text-decoration: none;
+    color: white;
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+.nav-container a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 2px;
+    background: rgb(179, 117, 241);
+    transition: width 0.4s ease;
+}
+
+.nav-container a:hover {
+    color: rgb(204, 153, 255);
+}
+
+.nav-container a:hover::after {
+    width: 100%;
+}
