@@ -22,7 +22,6 @@
     const CYAN = 'rgba(0,191,255,1)';
     const GOLD = 'rgba(255,215,0,1)';
 
-    // -------- Nebula (soft, slowly morphing blobs) --------
     class Blob {
         constructor({ x, y, r, hue, speed = 0.15 }) {
             this.x = x; this.y = y; this.r = r;
@@ -50,7 +49,6 @@
         }
     }
 
-    // -------- Orbs (slow-floating glints) --------
     class Orb {
         constructor() {
             this.x = Math.random() * W;
@@ -70,7 +68,6 @@
             this.x += Math.cos(this.angle) * this.speed;
             this.y += Math.sin(this.angle) * this.speed;
 
-            // wrap edges
             if (this.x < -5) this.x = W + 5;
             if (this.x > W + 5) this.x = -5;
             if (this.y < -5) this.y = H + 5;
@@ -88,16 +85,13 @@
         }
     }
 
-    // -------- Comet (rare smooth streak) --------
     class Comet {
         constructor() {
-            // randomized entry near left/top, exit near right/bottom
             this.sx = -40 + Math.random() * 80;
             this.sy = -40 + Math.random() * (H * 0.25);
             this.ex = W - 60 + Math.random() * 120;
             this.ey = H - 60 + Math.random() * 120;
 
-            // cubic bezier control points for a subtle arc
             const mx = W * (0.25 + Math.random() * 0.25);
             const my = H * (0.25 + Math.random() * 0.25);
             this.cx1 = (this.sx + mx) / 2;
@@ -117,21 +111,19 @@
             return { x, y };
         }
         update(dt) {
-            this.t += dt / this.duration;           // linear time
-            // ease-in then slight ease-out
+            this.t += dt / this.duration;
             const k = this.t < 0.7
-                ? Math.pow(this.t / 0.7, 3) * 0.7       // accelerate
-                : 0.7 + (1 - Math.pow(1 - (this.t - 0.7) / 0.3, 2)) * 0.3; // gentle finish
+                ? Math.pow(this.t / 0.7, 3) * 0.7
+                : 0.7 + (1 - Math.pow(1 - (this.t - 0.7) / 0.3, 2)) * 0.3;
             this.k = Math.min(1, k);
             if (this.k >= 1) this.done = true;
         }
         draw() {
             const { x, y } = this.bezier(this.k);
 
-            // trail using a simple history
             this._trail = this._trail || [];
             this._trail.push({ x, y, t: performance.now() });
-            // keep last ~10 points
+
             if (this._trail.length > 10) this._trail.shift();
 
             ctx.lineWidth = 2;
@@ -146,7 +138,6 @@
                 ctx.stroke();
             }
 
-            // comet head (glow)
             ctx.save();
             ctx.shadowBlur = 18;
             ctx.shadowColor = this.color;
@@ -158,7 +149,6 @@
         }
     }
 
-    // Create scene
     const blobs = RM ? [] : [
         new Blob({ x: W * 0.18, y: H * 0.25, r: Math.max(W, H) * 0.35, hue: PURPLE }),
         new Blob({ x: W * 0.82, y: H * 0.35, r: Math.max(W, H) * 0.30, hue: CYAN }),
