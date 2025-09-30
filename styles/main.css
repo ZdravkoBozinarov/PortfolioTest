@@ -649,15 +649,19 @@
 .my-clients-header p {
     margin-top: 1.125rem;
     font-size: 1.125rem;
+    color: gray;
+    max-width: 640px;
+    text-align: center;
 }
+
 
 .my-clients-grid {
     padding-top: 25px;
     margin: 28px auto 0;
     width: min(1200px, 94vw);
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 28px;
 }
 
 @media (max-width: 1100px) {
@@ -682,16 +686,44 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    vertical-align: center;
     border: 1px solid rgba(179, 117, 241, .45);
     background: rgba(17, 19, 24, 0.15);
     border-radius: 1.5rem;
-    padding: 1.875rem;
+    padding: 32px 24px;                     /* a bit more breathing room */
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.game-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 2px 6px rgba(179, 117, 241, .45), 0 0 0 1px rgba(179, 117, 241, .25) inset;
+    border-color: rgba(179, 117, 241, .8);
 }
 
 .game-card img {
     max-width: 3.75rem;
     max-height: 4.25rem;
-    margin: 0;
-    padding: 0;
+}
+
+.game-name {
+    margin: 10px 0 6px;
+    font-size: 22px;
+    font-weight: 800;      /* bolder like the reference */
+    color: #f5f6f8;
+}
+
+.game-type {
+    margin: 0 0 12px;
+    font-size: 14px;       /* slightly smaller subtitle */
+    color: gray;
+}
+
+.game-cta {
+    font-size: 16px;
+    text-decoration: none;
+    color: #ffffff;
+    transition: color .2s ease, transform .2s ease;
+}
+.game-cta:hover {
+    color: rgb(179, 117, 241);  /* your accent color on hover */
+    transform: translateY(-2px);
 }
