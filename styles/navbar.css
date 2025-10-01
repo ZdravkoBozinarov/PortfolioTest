@@ -1,3 +1,8 @@
+:root {
+    --nav-bg: rgba(20, 20, 24, 0.35);
+    --brand: rgb(179, 117, 241);
+}
+
 .nav-container {
     display: flex;
     position: fixed;
@@ -8,9 +13,9 @@
     align-items: center;
     padding: 24px 32px;
     z-index: 1000;
-
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
+    background: var(--nav-bg);
 }
 
 .left-nav-side {
@@ -20,16 +25,17 @@
     cursor: pointer;
 }
 
-.right-nav-side {
-    margin-right: 100px;
+.left-nav-side a {
+    text-decoration: none;
+    color: white;
 }
 
 .left-nav-side:hover {
     transform: scale(1.1);
 }
 
-.right-nav-side a {
-    font-weight: 100;
+.right-nav-side {
+    margin-right: 100px;
 }
 
 .right-nav-side,
@@ -41,21 +47,12 @@
     text-decoration: none;
 }
 
-.right-nav-side .clients {
-    margin-right: 60px;
-}
-
 .right-nav-side a {
     position: relative;
     text-decoration: none;
     color: white;
     font-weight: 400;
     transition: color 0.3s ease;
-}
-
-.left-nav-side a {
-    text-decoration: none;
-    color: white;
 }
 
 .right-nav-side a::after {
@@ -65,7 +62,7 @@
     bottom: -4px;
     width: 0;
     height: 2px;
-    background: rgb(179, 117, 241);
+    background: var(--brand);
     transition: width 0.4s ease;
 }
 
@@ -75,4 +72,173 @@
 
 .right-nav-side a:hover::after {
     width: 100%;
+}
+
+.nav-toggle {
+    margin-right: 30px;
+    display: none;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1100;
+    margin-left: auto;
+}
+
+.nav-toggle-bar {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: white;
+    margin: 4px 0;
+    transition: transform .25s ease, opacity .25s ease;
+}
+
+.nav-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .45);
+    z-index: 999;
+}
+
+.nav-overlay[hidden] {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .right-nav-side {
+        margin-right: 0;
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: min(85vw, 320px);
+        padding: 72px 24px 24px;
+        flex-direction: column;
+        gap: 20px;
+        background: rgba(18, 18, 22, 0.95);
+        backdrop-filter: blur(8px);
+        transform: translateX(100%);
+        transition: transform .3s ease;
+        box-shadow: -8px 0 24px rgba(0, 0, 0, .25);
+        z-index: 1001;
+    }
+
+    .right-nav-side a {
+        font-size: 18px;
+    }
+
+    .right-nav-side.is-open {
+        transform: translateX(0);
+    }
+
+    .nav-toggle {
+        display: inline-flex;
+        /* (inside the mobile @media) */
+        flex-direction: column;
+        /* <-- stack bars vertically */
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        /* spacing between bars; replace margins */
+    }
+
+    .nav-toggle-bar {
+        width: 24px;
+        height: 2px;
+        background: #fff;
+        margin: 0;
+        /* use gap on parent instead */
+        transition: transform .25s ease, opacity .25s ease;
+    }
+
+    .nav-toggle[aria-expanded="true"] {
+        gap: 0;
+    }
+
+    /* <- key change */
+
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1) {
+        transform: rotate(45deg);
+    }
+
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3) {
+        transform: translateY(-5px) rotate(-45deg) translateX(-1px);
+    }
+
+    /* Close button inside drawer */
+    .drawer-close {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        width: 40px;
+        height: 40px;
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .drawer-close::before,
+    .drawer-close::after {
+        content: "";
+        position: absolute;
+        width: 24px;
+        height: 3px;
+        /* thicker stroke */
+        background: #fff;
+        /* white lines */
+        border-radius: 2px;
+        /* rounded ends */
+        top: 50%;
+        left: 50%;
+        transform-origin: center;
+    }
+
+    .drawer-close::before {
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    .drawer-close::after {
+        transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+    /* Hover / active feedback */
+    .drawer-close:hover::before,
+    .drawer-close:hover::after {
+        background: rgb(204, 153, 255);
+        /* accent color */
+    }
+
+    .drawer-close:active::before,
+    .drawer-close:active::after {
+        background: var(--brand);
+    }
+
+    /* Optional: circular touch area for visibility */
+    .drawer-close {
+        border-radius: 50%;
+    }
+
+    .drawer-close:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
 }

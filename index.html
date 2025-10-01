@@ -23,13 +23,22 @@
         <div class="left-nav-side">
             <a href="#" data-scroll="#top">Zdravko Bozinarov</a>
         </div>
-        <div class="right-nav-side">
+
+        <button class="nav-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Open menu">
+            <span class="nav-toggle-bar"></span>
+            <span class="nav-toggle-bar"></span>
+            <span class="nav-toggle-bar"></span>
+        </button>
+
+        <nav id="primary-nav" class="right-nav-side" aria-label="Primary">
             <a href="#" data-scroll="#experience" class="experience">EXPERIENCE</a>
             <a href="#" data-scroll="#tech-stack" class="tech-stack">TECH STACK</a>
             <a href="#" data-scroll="#profiles" class="profiles">PROFILES</a>
-
-        </div>
+        </nav>
     </div>
+
+    <div class="nav-overlay" hidden></div>
+
 
     <main class="main-container">
         <div class="title">Hi, I am Zdravko<span style="color: rgb(179, 117, 241);">.</span></div>
@@ -206,7 +215,6 @@
         </div>
     </section>
 
-
     <footer>
         <div class="footer-wrapper">
             <div class="footer-container">
@@ -295,9 +303,41 @@
             });
         });
     </script>
+    <script>
+        (function () {
+            const toggle = document.querySelector('.nav-toggle');
+            const drawer = document.getElementById('primary-nav');
+            const overlay = document.querySelector('.nav-overlay');
+            const closeBtn = drawer.querySelector('.drawer-close');
+
+            function openMenu() {
+                toggle.setAttribute('aria-expanded', 'true');
+                drawer.classList.add('is-open');
+                overlay.hidden = false;
+                overlay.classList.add('is-visible');
+                document.body.style.overflow = 'hidden';
+                (drawer.querySelector('a') || closeBtn).focus();
+            }
+            function closeMenu() {
+                toggle.setAttribute('aria-expanded', 'false');
+                drawer.classList.remove('is-open');
+                overlay.classList.remove('is-visible');
+                overlay.hidden = true;
+                document.body.style.overflow = '';
+                toggle.focus();
+            }
+
+            toggle.addEventListener('click', () =>
+                toggle.getAttribute('aria-expanded') === 'true' ? closeMenu() : openMenu()
+            );
+            overlay.addEventListener('click', closeMenu);
+            document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+            closeBtn.addEventListener('click', closeMenu);
+            drawer.addEventListener('click', e => { if (e.target.closest('a')) closeMenu(); });
+        })();
+    </script>
 
     <script src="js/experience-section.js"></script>
-    <script src="js/star-field.js"></script>
 </body>
 
 </html>
