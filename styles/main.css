@@ -551,6 +551,7 @@
 @media (max-width: 550px) {
     .my-tech-stack-grid {
         grid-template-columns: 1fr;
+        padding-inline: 20px;
     }
 }
 
