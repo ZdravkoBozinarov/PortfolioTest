@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles/general.css" />
     <link rel="stylesheet" href="styles/navbar.css" />
     <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="styles/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,15 +17,17 @@
 </head>
 
 <body>
+    <div id="top"></div>
 
     <div class="nav-container">
         <div class="left-nav-side">
-            <a href="index.html">Zdravko Bozinarov</a>
+            <a href="#" data-scroll="#top">Zdravko Bozinarov</a>
         </div>
         <div class="right-nav-side">
-            <a href="#experience" class="experience">EXPERIENCE</a>
-            <a href="#tech-stack" class="tech-stack">TECH STACK</a>
-            <a href="#profiles" class="profiles">PROFILES</a>
+            <a href="#" data-scroll="#experience" class="experience">EXPERIENCE</a>
+            <a href="#" data-scroll="#tech-stack" class="tech-stack">TECH STACK</a>
+            <a href="#" data-scroll="#profiles" class="profiles">PROFILES</a>
+
         </div>
     </div>
 
@@ -71,7 +74,8 @@
                 <h3 class="card-title">A Freelance Developer</h3>
                 <p class="card-desc">
                     Working with clients across various industries to deliver custom software solutions that meet
-                    their needs. Specializing in web and desktop applications, I utilize modern frameworks and best practices to ensure scalable, maintainable, and user-friendly solutions.
+                    their needs. Specializing in web and desktop applications, I utilize modern frameworks and best
+                    practices to ensure scalable, maintainable, and user-friendly solutions.
                 </p>
             </article>
 
@@ -82,7 +86,9 @@
                 </div>
                 <h3 class="card-title">Bachelor of Hardware & Software Engineering</h3>
                 <p class="card-desc">
-                    Studying advanced topics in computer engineering, including embedded systems, software architecture, and hardware design. Gaining hands-on experience through collaborative projects and research, while developing strong problem-solving and analytical skills for real-world applications.
+                    Studying advanced topics in computer engineering, including embedded systems, software architecture,
+                    and hardware design. Gaining hands-on experience through collaborative projects and research, while
+                    developing strong problem-solving and analytical skills for real-world applications.
                 </p>
             </article>
 
@@ -93,7 +99,8 @@
                 </div>
                 <h3 class="card-title">Developer at CraftiGames</h3>
                 <p class="card-desc">
-                    As the first point of contact between the community and the rest of the team, I contributed to game development, managed feedback, and helped implement new features based on player input.
+                    As the first point of contact between the community and the rest of the team, I contributed to game
+                    development, managed feedback, and helped implement new features based on player input.
                 </p>
             </article>
         </div>
@@ -105,7 +112,8 @@
                 <h1><span class="accent">My</span> Tech Stack</h1>
             </div>
             <div class="my-tech-stack-sub-title">
-                <p>Technologies and frameworks I use to build robust, scalable, and creative solutions for web and desktop applications.</p>
+                <p>Technologies and frameworks I use to build robust, scalable, and creative solutions for web and
+                    desktop applications.</p>
             </div>
 
         </div>
@@ -174,7 +182,8 @@
                 <h3 class="pc-title">Discord</h3>
                 <div class="pc-handle">@JstMental</div>
                 <p class="pc-sub">Connect with me on Discord</p>
-                <a href="https://discord.com/users/981476712699281508" target="_blank" class="pc-cta">View Profile <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <a href="https://discord.com/users/981476712699281508" target="_blank" class="pc-cta">View Profile <i
+                        class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </article>
 
             <article class="profile-card">
@@ -196,6 +205,53 @@
             </article>
         </div>
     </section>
+
+
+    <footer>
+        <div class="footer-wrapper">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>Zdravko Bozinarov</h3>
+                    <p>Crafting digital experiences and innovative solutions for the modern web.</p>
+                    <div class="icons">
+                        <div class="icon-hover">
+                            <a href="https://github.com/ZdravkoBozinarov" target="_blank"><i
+                                    class="fa-brands fa-github"></i></a>
+                        </div>
+                        <div class="icon-hover">
+                            <a href="https://www.linkedin.com/in/zdravko-bozinarov-a06696298/" target="_blank"><i
+                                    class="fa-brands fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <div class="contact-me-button">
+                        <a href="mailto:zzdravvko@gmail.com">
+                            <i class="fa fa-envelope footer-mail" aria-hidden="true"></i>
+                            <span>zzdravvko@gmail.com</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Experience</a></li>
+                        <li><a href="#">Profiles</a></li>
+                        <li><a href="#">Clients</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-bottom">
+                    <p>&copy; 2025 Zdravko Bozinarov. All rights reserved.</p>
+                    <p>Made by <a href="#">Zdravko Bozinarov</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
 
     <script>
         const words = ["software engineer", "problem solver", "tech enthusiasts"];
