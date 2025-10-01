@@ -8,11 +8,6 @@
     padding-bottom: 250px;
 }
 
-.view-clients-button a {
-    text-decoration: none;
-    color: black;
-}
-
 .title {
     font-size: 2rem;
     font-weight: bold;
@@ -182,6 +177,7 @@
 }
 
 .experience-section {
+    padding: 100px 0 100px 0;
     opacity: 0;
     transform: translateY(40px);
     transition: opacity 1s ease, transform 1s ease;
@@ -197,12 +193,11 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin: 100px 0;
 }
 
 .experience-section h1 {
     font-size: 46px;
-    margin-bottom: 10px;
+    margin: 0 0 10px 0;
 }
 
 .experience-section-my-text {
@@ -294,7 +289,6 @@
     letter-spacing: .2px;
     color: #e7e7e7;
     background: rgba(255, 255, 255, .06);
-    border: 1px solid rgba(179, 117, 241, .5);
     border-radius: 999px;
     padding: 6px 10px;
     margin-bottom: 12px;
@@ -318,6 +312,10 @@
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
 }
 
+.card:hover .card-badge {
+    border: 1px solid rgba(179, 117, 241, .5);
+}
+
 .card-title {
     margin: 8px 0 8px;
     font-size: 18px;
@@ -333,7 +331,8 @@
 
 
 .my-profiles {
-    padding-top: 100px;
+    padding: 100px 0 100px 0;
+    text-align: center;
     opacity: 0;
     transform: translateY(40px);
     transition: opacity 1s ease, transform 1s ease;
@@ -342,12 +341,6 @@
 .my-profiles.animate {
     opacity: 1;
     transform: translateY(0);
-}
-
-.my-profiles {
-    margin: 0 0;
-    margin-bottom: 50px;
-    text-align: center;
 }
 
 .my-profile-upper-title {
@@ -479,6 +472,7 @@
 }
 
 .my-tech-stack {
+    padding: 100px 0 100px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -494,7 +488,7 @@
 
 .my-tech-stack-title h1,
 .my-tech-stack-sub-title p {
-    margin: 0px;
+    margin: 0 0 10px 0;
 }
 
 .my-tech-stack {
@@ -632,98 +626,4 @@
     margin: 0;
     font-size: .9rem;
     color: #97a0ae;
-}
-
-.my-clients-header {
-    padding-top: 100px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.my-clients-header h2 {
-    margin-bottom: 1.20rem;
-    font-size: 3.5rem;
-}
-
-.my-clients-header p {
-    margin-top: 1.125rem;
-    font-size: 1.125rem;
-    color: gray;
-    max-width: 640px;
-    text-align: center;
-}
-
-
-.my-clients-grid {
-    padding-top: 25px;
-    margin: 28px auto 0;
-    width: min(1200px, 94vw);
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 28px;
-}
-
-@media (max-width: 1100px) {
-    .my-clients-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 1100px) {
-    .my-clients-grid>.game-card:last-child {
-        grid-column: 1 / -1;
-    }
-}
-
-@media (max-width: 620px) {
-    .my-clients-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-.game-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 1px solid rgba(179, 117, 241, .45);
-    background: rgba(17, 19, 24, 0.15);
-    border-radius: 1.5rem;
-    padding: 32px 24px;                     /* a bit more breathing room */
-    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-}
-
-.game-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 2px 6px rgba(179, 117, 241, .45), 0 0 0 1px rgba(179, 117, 241, .25) inset;
-    border-color: rgba(179, 117, 241, .8);
-}
-
-.game-card img {
-    max-width: 3.75rem;
-    max-height: 4.25rem;
-}
-
-.game-name {
-    margin: 10px 0 6px;
-    font-size: 22px;
-    font-weight: 800;      /* bolder like the reference */
-    color: #f5f6f8;
-}
-
-.game-type {
-    margin: 0 0 12px;
-    font-size: 14px;       /* slightly smaller subtitle */
-    color: gray;
-}
-
-.game-cta {
-    font-size: 16px;
-    text-decoration: none;
-    color: #ffffff;
-    transition: color .2s ease, transform .2s ease;
-}
-.game-cta:hover {
-    color: rgb(179, 117, 241);  /* your accent color on hover */
-    transform: translateY(-2px);
 }

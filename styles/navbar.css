@@ -20,6 +20,10 @@
     cursor: pointer;
 }
 
+.right-nav-side {
+    margin-right: 100px;
+}
+
 .left-nav-side:hover {
     transform: scale(1.1);
 }
@@ -41,7 +45,7 @@
     margin-right: 60px;
 }
 
-.nav-container a {
+.right-nav-side a {
     position: relative;
     text-decoration: none;
     color: white;
@@ -49,7 +53,12 @@
     transition: color 0.3s ease;
 }
 
-.nav-container a::after {
+.left-nav-side a {
+    text-decoration: none;
+    color: white;
+}
+
+.right-nav-side a::after {
     content: "";
     position: absolute;
     left: 0;
@@ -60,10 +69,10 @@
     transition: width 0.4s ease;
 }
 
-.nav-container a:hover {
+.right-nav-side a:hover {
     color: rgb(204, 153, 255);
 }
 
-.nav-container a:hover::after {
+.right-nav-side a:hover::after {
     width: 100%;
 }
