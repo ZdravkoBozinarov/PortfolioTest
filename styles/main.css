@@ -170,7 +170,14 @@
 .scroll-down-container {
     position: relative;
     text-align: center;
-    margin-top: 20px;
+    top: -125px;
+}
+
+@media (max-width: 600px) {
+    .scroll-down-container {
+        top: 75px;
+    }
+
 }
 
 .scroll-down-container i {
