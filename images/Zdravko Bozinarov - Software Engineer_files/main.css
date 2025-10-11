@@ -105,7 +105,7 @@
 .btn {
     display: inline-flex;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
     padding: 14px 28px;
     font-size: 18px;
     font-weight: 600;
@@ -122,6 +122,7 @@
 }
 
 .btn-primary {
+    margin-right: 20px;
     background: rgb(179, 117, 241);
     color: #0b0b0f;
     box-shadow: 0 2px 10px rgba(100, 10, 200, 0.35);
@@ -154,37 +155,12 @@
     box-shadow: 0 0 0 3px rgba(179, 117, 241, .5);
 }
 
-@media (max-width: 700px) {
-    .buttons {
-        display: grid;
-        grid-auto-flow: row;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-    }
-
-    .buttons .third {
-        grid-column: 1 / -1;
-        justify-self: center;
-        max-width: 200px;
-        width: 100%;
-    }
-
-    .buttons>a {
-        justify-content: center;
-    }
-
-    .btn-outline {
-        background: rgb(179, 117, 241);
-        color: #0b0b0f;
-        box-shadow: 0 2px 10px rgba(100, 10, 200, 0.35);
-    }
-
-    .btn-outline:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 16px rgba(100, 10, 200, 0.55);
-    }
-
+.buttons {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 1rem;
 }
+
 
 .scroll-down-container {
     display: flex;
@@ -254,7 +230,6 @@
 }
 
 .experience-section p {
-    margin: 0.5rem 25px;
     font-size: 18px;
     color: gray;
     max-width: 640px
@@ -679,60 +654,4 @@
     margin: 0;
     font-size: .9rem;
     color: #97a0ae;
-}
-
-.my-tech-stack {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 1s ease, transform 1s ease;
-}
-
-.my-tech-stack.animate {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.top-button {
-    position: fixed;
-    bottom: 55px;
-    right: 55px;
-    font-size: 1.5rem;
-    padding: 10px 15px;
-    background-color: rgb(192, 117, 241);
-    color: black;
-    border: none;
-    outline: none;
-    border-radius: 50%;
-    cursor: pointer;
-    opacity: 0;
-    pointer-events: none;
-    z-index: 10000;
-    transform: translateY(20px) scale(0.8);
-    transition:
-        opacity 0.4s ease,
-        transform 0.4s ease,
-        background-color 0.3s ease,
-        box-shadow 0.3s ease,
-        color 0.3s ease;
-}
-
-.top-button.show {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(0) scale(1);
-}
-
-.top-button:hover {
-    background-color: rgb(140, 60, 210);
-    transform: translateY(-4px) scale(1.2);
-    box-shadow: 0 6px 16px rgba(140, 60, 210, 0.6);
-    color: white;
-}
-
-@media (max-width: 640px) {
-
-    .top-button,
-    .top-button.show {
-        display: none !important;
-    }
 }

@@ -24,6 +24,7 @@
             <a href="#" data-scroll="#top">Zdravko Bozinarov</a>
         </div>
 
+
         <button class="nav-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Open menu">
             <span class="nav-toggle-bar"></span>
             <span class="nav-toggle-bar"></span>
@@ -59,12 +60,21 @@
             <a href="mailto:zzdravvko@gmail.com" class="btn btn-outline">
                 <i class="fa fa-envelope" aria-hidden="true"></i> Contact me
             </a>
+
+            <a href="./assets/CV.pdf" class="btn btn-primary third" data-download="cv" download="CV.pdf">
+                <i class="fa-solid fa-download"></i> Download CV
+            </a>
         </div>
     </main>
 
     <div class="scroll-down-container">
         <i class="fa-solid fa-chevron-down"></i>
     </div>
+
+    <button id="scrollToTop" class="top-button" aria-label="Scroll to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
 
     <section id="experience" class="experience-section">
         <div class="experience-section-title">
@@ -246,9 +256,9 @@
                 <div class="footer-column">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="#experience">Experience</a></li>
-                        <li><a href="#tech-stack">Tech Stack</a></li>
-                        <li><a href="#profiles">Profiles</a></li>
+                        <li><a href="#" data-scroll="#experience">Experience</a></li>
+                        <li><a href="#" data-scroll="#tech-stack">Tech Stack</a></li>
+                        <li><a href="#" data-scroll="#profiles">Profiles</a></li>
                     </ul>
                 </div>
 
@@ -259,85 +269,7 @@
             </div>
         </div>
     </footer>
-
-
-    <script>
-        const words = ["software engineer", "problem solver", "tech enthusiasts"];
-        const typingEl = document.getElementById("typing");
-
-        let wordIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        let typingSpeed = 100;   // ms per character
-        let pauseTime = 1500;    // pause when word is fully typed
-
-        function typeEffect() {
-            const currentWord = words[wordIndex];
-
-            if (isDeleting) {
-                typingEl.textContent = currentWord.substring(0, charIndex--);
-                if (charIndex < 0) {
-                    isDeleting = false;
-                    wordIndex = (wordIndex + 1) % words.length; // go to next word
-                }
-            } else {
-                typingEl.textContent = currentWord.substring(0, charIndex++);
-                if (charIndex > currentWord.length) {
-                    isDeleting = true;
-                    setTimeout(typeEffect, pauseTime); // pause before deleting
-                    return;
-                }
-            }
-
-            setTimeout(typeEffect, isDeleting ? typingSpeed / 2 : typingSpeed);
-        }
-
-        typeEffect();
-    </script>
-    <script>
-        document.querySelectorAll('a[data-scroll]').forEach(a => {
-            a.addEventListener('click', e => {
-                e.preventDefault(); // stops "#experience" from entering the URL
-                const target = document.querySelector(a.dataset.scroll);
-                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            });
-        });
-    </script>
-    <script>
-        (function () {
-            const toggle = document.querySelector('.nav-toggle');
-            const drawer = document.getElementById('primary-nav');
-            const overlay = document.querySelector('.nav-overlay');
-            const closeBtn = drawer.querySelector('.drawer-close');
-
-            function openMenu() {
-                toggle.setAttribute('aria-expanded', 'true');
-                drawer.classList.add('is-open');
-                overlay.hidden = false;
-                overlay.classList.add('is-visible');
-                document.body.style.overflow = 'hidden';
-                (drawer.querySelector('a') || closeBtn).focus();
-            }
-            function closeMenu() {
-                toggle.setAttribute('aria-expanded', 'false');
-                drawer.classList.remove('is-open');
-                overlay.classList.remove('is-visible');
-                overlay.hidden = true;
-                document.body.style.overflow = '';
-                toggle.focus();
-            }
-
-            toggle.addEventListener('click', () =>
-                toggle.getAttribute('aria-expanded') === 'true' ? closeMenu() : openMenu()
-            );
-            overlay.addEventListener('click', closeMenu);
-            document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
-            closeBtn.addEventListener('click', closeMenu);
-            drawer.addEventListener('click', e => { if (e.target.closest('a')) closeMenu(); });
-        })();
-    </script>
-
-    <script src="js/experience-section.js"></script>
+    <script src="js/app.js"></script>
 </body>
 
 </html>
