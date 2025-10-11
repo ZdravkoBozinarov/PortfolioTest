@@ -729,10 +729,8 @@
     color: white;
 }
 
-@media (max-width: 640px) {
-
-    .top-button,
-    .top-button.show {
-        display: none !important;
+@media (max-width: 700px) {
+    .top-button {
+        bottom: 75px;
     }
 }

@@ -197,21 +197,20 @@
         }
 
         const scrollBtn = document.getElementById('scrollToTop');
+        if (scrollBtn) {
+            const onScroll = () => {
+                const shouldShow = window.scrollY > 250; // tweak threshold if needed
+                scrollBtn.classList.toggle('show', shouldShow);
+            };
 
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                scrollBtn.classList.add('show');
-            } else {
-                scrollBtn.classList.remove('show');
-            }
-        });
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll(); // set initial state
 
-        scrollBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+            scrollBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
-        });
+        }
+
 
     });
 })();
