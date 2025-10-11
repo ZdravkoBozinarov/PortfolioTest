@@ -731,6 +731,10 @@
 
 @media (max-width: 700px) {
     .top-button {
+        padding: 5px 10px;
+
         bottom: 75px;
+        left: 35px;
+        right: auto;
     }
 }
